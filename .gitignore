@@ -1,0 +1,17 @@
+# Python 暫存檔
+__pycache__/
+*.py[cod]
+
+# 環境變數與敏感資料 (絕對不能上傳!)
+.env
+.venv
+env/
+venv/
+
+# 資料庫與大型檔案
+chroma_db/
+*.pdf
+data/
+
+# VS Code 設定
+.vscode/
