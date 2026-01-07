@@ -56,15 +56,8 @@
 └── data/                 # 知識庫 PDF 存放區
 
 
-這是一份**專業級、針對面試官口味**設計的 `README.md`。
-
-這份文檔的結構不僅介紹了「怎麼跑」，更重要的是它**解釋了「為什麼這樣設計」**。我特地加入了一個「架構與技術亮點」章節，幫你把你解決的 Cold Start 和 Reranking 技術難點直接寫出來。面試官看 Code 前通常會先看這份文檔，這能幫你建立很好的第一印象。
-
-請在你的專案根目錄建立一個 `README.md` 檔案，然後將以下內容複製貼上：
-
 ---
 
-```markdown
 # Enterprise Agentic RAG Framework - 智慧交通法規諮詢助理 🚦
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
@@ -72,7 +65,7 @@
 [![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o-orange)](https://openai.com/)
 [![RAG](https://img.shields.io/badge/RAG-Advanced-purple)]()
 
-## 📖 專案簡介 (Introduction)
+## 專案簡介 (Introduction)
 本專案是一個基於 **Agentic Workflow (代理人工作流)** 的企業級知識問答系統原型。
 
 針對傳統 RAG (Retrieval-Augmented Generation) 系統常見的「檢索不精準」與「資源浪費」痛點，本系統導入了 **Router-Retriever 架構**。透過 LLM 進行意圖識別 (Intent Recognition)，自主判斷該進行閒聊、查詢知識庫，或是進行多步驟推理 (Reasoning)。
@@ -81,7 +74,7 @@
 
 ---
 
-## 🚀 核心功能與架構 (Key Features & Architecture)
+## 核心功能與架構 (Key Features & Architecture)
 
 ### 1. Agentic Workflow (代理人工作流)
 系統不再被動檢索，而是具備「大腦」。
@@ -99,7 +92,7 @@
 
 ---
 
-## 🛠️ 技術棧 (Tech Stack)
+## 技術棧 (Tech Stack)
 
 * **LLM Orchestration**: LangChain, LangGraph
 * **Model**: OpenAI GPT-4o-mini (Reasoning), BAAI/bge-reranker-base (Reranking)
@@ -111,7 +104,7 @@
 
 ---
 
-## 📂 專案結構 (Project Structure)
+## 專案結構 (Project Structure)
 
 ```bash
 .
@@ -126,7 +119,7 @@
 
 ---
 
-## ⚡ 快速開始 (Quick Start)
+## 快速開始 (Quick Start)
 
 ### 1. Clone 專案
 
@@ -191,15 +184,7 @@ python app.py
 > 3. 呼叫 `calculate_fine` 計算總和
 > 4. 回覆最終金額
 
----
 
-## 未來展望 (Future Work)
-
-* [ ] 導入 **LangGraph** 以處理更複雜的循環邏輯 (Cyclic Graph)。
-* [ ] 實作 **Evaluation Pipeline** (使用 Ragas) 自動評估檢索準確率。
-* [ ] 支援更多格式的非結構化資料 (如圖片、表格) 解析。
-
----
 
 ## Author
 
