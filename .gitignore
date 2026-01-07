@@ -15,3 +15,5 @@ data/
 
 # VS Code 設定
 .vscode/
+
+agent_demo.py
