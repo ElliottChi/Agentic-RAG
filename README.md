@@ -96,7 +96,7 @@
 ## 技術棧 (Tech Stack)
 
 * **LLM Orchestration**: LangChain, LangGraph
-* **Model**: OpenAI GPT-4o-mini (Reasoning), BAAI/bge-reranker-base (Reranking)
+* **Model**: OpenAI GPT-4o-mini, BAAI/bge-reranker-base (Reranking)
 * **Vector DB**: ChromaDB
 * **Retrieval**: BM25, EnsembleRetriever, ContextualCompressionRetriever
 * **Backend**: Flask
