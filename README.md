@@ -10,7 +10,7 @@
 
 針對傳統 RAG (Retrieval-Augmented Generation) 系統常見的「檢索不精準」與「資源浪費」痛點，本系統導入了 **Router-Retriever 架構**。透過 LLM 進行意圖識別 (Intent Recognition)，自主判斷該進行閒聊、查詢知識庫，或是進行多步驟推理 (Reasoning)。
 
-系統落地於 **LINE Bot** 平台，並解決了 **Cold Start (冷啟動延遲)** 與 **Stateless (無狀態記憶)** 等工程難題，實現了高精準度、低延遲的法規諮詢服務。
+系統落地於 **LINE Bot** 平台，並解決了 **Cold Start (冷啟動延遲)** 與 **Stateless (無狀態記憶)** 等問題，實現了高精準度、低延遲的法規諮詢服務。
 
 ---
 
