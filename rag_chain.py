@@ -53,7 +53,7 @@ def get_hybrid_retriever(splits):
     embedding_function = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-large")
     
     # 準備 Vector Retriever (Chroma)
-    # 這裡設定 persist_directory，如果已經有建立過，它會自動讀取舊的，若有新文件則會加入
+    # 如果已經有建立過，它會自動讀取舊的，若有新文件則會加入
     vectorstore = Chroma.from_documents(
         documents=splits, # 確保向量庫跟 BM25 用的文件一致
         embedding=embedding_function,
@@ -80,11 +80,10 @@ def get_hybrid_retriever(splits):
     # 第二階段 - 精排：使用 Cross-Encoder Reranker
     print("正在初始化 Cross-Encoder Reranker (精排階段)...")
     
-    # 使用 BAAI 的 Reranker 模型，這對中文的語意排序效果非常好
-    # 其他可選項: "BAAI/bge-reranker-v2-m3" (更強但模型較大)
+    # 使用 BAAI 的 Reranker 模型，這對中文的語意排序效果較好
     reranker_model = HuggingFaceCrossEncoder(model_name="BAAI/bge-reranker-base")
     
-    # 設定壓縮器：只取重新打分後最高的 Top 3
+    # 設定壓縮器：取最高的 Top 3
     compressor = CrossEncoderReranker(model=reranker_model, top_n=3)
     
     # 構建兩階段檢索器: 先跑 ensemble (粗篩), 再跑 compressor (精排)
