@@ -43,7 +43,6 @@ def load_and_process_data(directory_path="./data"):
         print("警告: 知識庫中沒有文件")
         return []
 
-    # PDF 文字通常較長，建議 Chunk size 設大一點
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
     splits = text_splitter.split_documents(documents)
     return splits
