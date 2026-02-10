@@ -28,7 +28,7 @@
 
 ### 3. Engineering Optimization
 - **Model Pre-loading (預熱機制)**：在 Server 啟動時強制載入 Embedding 與 Reranker 模型，解決首次推論超時 (Cold Start) 問題。
-- **Session Memory **：自行實作對話狀態管理，將 Chat History 動態注入 Prompt，賦予 Agent 上下文理解能力。
+- **Session Memory**：自行實作對話狀態管理，將 Chat History 動態注入 Prompt，賦予 Agent 上下文理解能力。
 
 ---
 
