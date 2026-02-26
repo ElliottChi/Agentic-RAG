@@ -14,7 +14,7 @@
 
 ---
 
-## 🚀 核心技術亮點 (Key Features)
+## 🚀 核心技術亮點
 
 ### 1. 動態混合檢索 (Hybrid Retrieval)
 捨棄單一的向量搜尋，實作了強大的多路召回（Multi-way Recall）機制：
@@ -30,11 +30,11 @@
 - **Reviewer Node**：查驗搜尋結果數量與品質，決定是否需要重啟（Route back）或中場結案。
 - **Generator Node**：嚴格約束 Prompt 的 Synthesis Layer，確保 Zero-hallucination 並標註 Source。
 
-### 3. LLMOps 整合 (可觀測性與評估)
+### 3. LLMOps 整合
 - 整合 **LangSmith** 追蹤 LangGraph 狀態軌跡，實現 Token 消耗與延遲監控。
 - 支援 **Ragas / TruLens**（待解鎖），能夠對「Context Precision（檢索精準度）」與「Answer Relevance（回答相關性）」進行量化評估。
 
-### 4. 生產級基礎設施 (Production-Ready)
+### 4. 生產級基礎設施
 - **FastAPI Backend**：非同步、基於 Pydantic 強型別合約的 RESTful API，並完備 Error Handle 捕捉機制。
 - **Streamlit Frontend**：具備 Expander 元件的聊天介面，完美將 Agent 的「思考鏈 (CoT)」與「檢索來源庫 (Sources)」白箱化可視化。
 - **Docker 容器化**：透過 `docker-compose` 一鍵編排 API, UI, Qdrant 與 Neo4j 等微服務集群。
@@ -42,7 +42,7 @@
 
 ---
 
-## 💡 應用場景展示 (Use Case Showcase)
+## 💡 應用場景展示
 
 本系統具備高度的領域適應性 (Domain-Agnostic)。為了面試展示與功能驗證，專案內建了**台灣《道路交通管理處罰條例》**的測試語料（位於 `data/raw/`，包含 TXT, CSV, JSON 格式）。
 
@@ -87,30 +87,30 @@ graph TD
 
 ---
 
-## 📂 目錄結構 (Project Structure)
+## 📂 目錄結構 (Structure)
 
 ```text
 deep_research_rag/
 ├── data/
-│   ├── raw/             # 放置即將被匯入的初始文本、PDF、CSV 與 JSON (git ignored)
-│   ├── processed/       # 持久化的 BM25 索引檔 (bm25_index.pkl)
-│   └── qdrant_db/       # 本機端 Qdrant 向量持久化資料庫
+│   ├── raw/             
+│   ├── processed/       # BM25 索引檔 (bm25_index.pkl)
+│   └── qdrant_db/       # 本機向量資料庫
 ├── scripts/
 │   ├── ingest_data.py   # ETL 資料匯入腳本 (文件解析、切塊、多重資料庫寫入)
 │   └── ...
 ├── src/
-│   ├── api/             # FastAPI 後端伺服器 (server.py)
+│   ├── api/             
 │   ├── db/              # Hybrid DB Layer 介面與實作 (base.py, qdrant_store.py, neo4j_store.py, bm25_store.py)
 │   ├── orchestration/   # Agentic Workflow 工作流 (graph.py, state.py, nodes/*)
 │   ├── synthesis/       # 生成層與提示詞管理 (generator.py)
-│   └── ui/              # Streamlit 前端網頁介面 (app.py)
-├── tests/               # 測試與單元測試代碼 (pytest)
-├── .github/workflows/   # CI/CD GitHub Actions 配置
-├── .env.example         # 環境變數與 API Kimplate
-├── docker-compose.yml   # 微服務容器編排設定檔
-├── Dockerfile           # 應用服務基礎鏡像封裝指令
-├── requirements.txt     # Python 依賴清單
-└── README.md            # 本專案說明文件
+│   └── ui/              
+├── tests/               
+├── .github/workflows/   
+├── .env.example         
+├── docker-compose.yml   
+├── Dockerfile           
+├── requirements.txt     
+└── README.md            
 ```
 
 ---
@@ -135,7 +135,7 @@ NEO4J_URI=bolt://localhost:7687
 python scripts/ingest_data.py
 ```
 
-### 3. 一鍵 Docker 部署 (推薦)
+### 3. Docker
 確保本機已安裝 [Docker](https://www.docker.com/) 與 Docker Compose，在專案根目錄執行：
 ```bash
 docker-compose up --build -d
@@ -158,7 +158,7 @@ pip install -r requirements.txt
 # 3. 執行測試腳本
 pytest tests/
 
-# 4. 手動啟動服務 (需個別開啟 Terminal) 或執行一鍵啟動腳本
+# 4. 手動啟動服務
 # 若在 Windows 環境下，可直接點擊專案下方的 `run.bat`
 # 後端 API
 uvicorn src.api.server:app --host 0.0.0.0 --port 8000 --reload
