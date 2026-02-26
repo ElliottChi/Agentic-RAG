@@ -69,7 +69,7 @@ graph TD
         
         Researcher --> Reviewer[Reviewer Node]
         Reviewer -->|文件不足 且 次數 < 3| Researcher
-        Reviewer -->|文件足夠 或 達標| Generator[Generator (Synthesis) Node]
+        Reviewer -->|文件足夠 或 達標| Generator["Generator (Synthesis) Node"]
     end
 
     %% DB Layer
