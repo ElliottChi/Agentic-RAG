@@ -48,7 +48,7 @@ async def chat_endpoint(request: ChatRequest):
     }
     
     try:
-        final_state = graph.invoke(inputs)
+        final_state = graph.invoke(inputs, config={"configurable": {"thread_id": thread_id}})
         
         # 解析返回狀態
         final_messages = final_state.get("messages", [])

@@ -55,7 +55,7 @@ def main(mock_neo4j_class):
     print("啟動 LangGraph 工作流...")
     
     # 執行工作流
-    final_state = graph.invoke(initial_state)
+    final_state = graph.invoke(initial_state, config={"configurable": {"thread_id": "test_thread"}})
     
     # 記錄日誌
     log_data = {

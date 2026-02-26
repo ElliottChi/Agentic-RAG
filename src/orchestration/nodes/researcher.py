@@ -4,9 +4,11 @@ from src.orchestration.state import AgentState
 from src.db.qdrant_store import QdrantStore
 from src.db.neo4j_store import Neo4jStore
 from src.db.bm25_store import BM25Store
+from src.db.reranker import BGEReranker
 
 # 模組層級初始化 Embeddings (避免每次呼叫節點都重新載入模型)
 _embeddings = None
+_reranker = None
 
 def get_embeddings():
     global _embeddings
@@ -17,6 +19,12 @@ def get_embeddings():
             encode_kwargs={'normalize_embeddings': True}
         )
     return _embeddings
+
+def get_reranker():
+    global _reranker
+    if _reranker is None:
+        _reranker = BGEReranker()
+    return _reranker
 
 def researcher_node(state: AgentState) -> dict:
     """
@@ -86,8 +94,14 @@ def researcher_node(state: AgentState) -> dict:
     
     print(f"Total retrieved docs before dedup: {len(docs)}, after dedup: {len(unique_docs)}")
 
+    # ===== 重排序機制 (Reranking) =====
+    reranker = get_reranker()
+    reranked_docs = reranker.rerank(current_plan, unique_docs, top_k=3)
+    
+    print(f"Docs after reranking: {len(reranked_docs)}")
+
     # 回傳更新的狀態
     return {
-        "retrieved_docs": unique_docs,  # 搭配 operator.add 會自動 append
+        "retrieved_docs": reranked_docs,  # 搭配 operator.add 會自動 append
         "search_count": current_count + 1
     }
