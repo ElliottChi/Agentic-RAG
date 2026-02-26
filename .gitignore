@@ -1,0 +1,45 @@
+# === Python environments & caches ===
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.antigravity/
+run_ngrok_demo.bat
+
+# === Secrets & Configurations ===
+.env
+.env.local
+.env.*
+!.env.example
+
+# === Databases & Data ===
+data/qdrant_db/
+data/processed/
+bm25_index.pkl
+
+# 原始資料
+data/raw/*
+!data/raw/.gitkeep
+!data/raw/sample.*
+
+#  Docker 掛載的資料卷
+qdrant_data/
+neo4j_data/
+
+# === Logs & Generated Outputs ===
+*.log
+execution_log.json
+ingest_log.txt
+test_out.txt
+
+# === IDEs & OS specific ===
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
