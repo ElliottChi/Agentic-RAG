@@ -6,11 +6,11 @@
 
 ## 📌 專案標題與簡介
 
-**Domain-Specific Deep Research Agentic RAG** 是一個專為特定領域（如法律、金融、醫療等）打造的「深度研究代理式檢索增強生成系統」。
+**Domain-Specific Deep Research Agentic RAG** 是一個專為特定領域打造的「深度研究代理式檢索增強生成系統」。
 
-傳統的線性 RAG（Retrieval-Augmented Generation）往往面臨「多跳推理（Multi-hop Reasoning）能力不足」、「單次檢索命中率低」以及「多輪對話上下文遺失」等挑戰。為解決這些痛點，本專案導入了 **Agentic Workflow（代理工作流）** 架構，結合知識圖譜與向量檢索，使 AI 代理（Agent）能夠像人類研究員一樣：主動拆解問題、擬定摘要計畫、進行跨資料庫的多輪檢索過濾，最終統整生成具有高度可信力且附帶引用的答案。
+傳統的 RAG 往往面臨「Multi-hop Reasoning能力不足」、「單次檢索命中率低」以及「多輪對話上下文遺失」等挑戰。為解決這些痛點，本專案導入了 **Agentic Workflow** 架構，結合知識圖譜與向量檢索，使 AI Agent能夠像人類研究員一樣：主動拆解問題、擬定摘要計畫、進行跨資料庫的多輪檢索過濾，最終統整生成具有高度可信力且附帶引用的答案。
 
-此專案設計符合生產環境（Production-ready）標準，具備前後端分離、非同步處理、容器化部署與自動化 CI/CD 流水線。
+此專案設計符合生產環境標準，具備前後端分離、非同步處理與容器化部署。
 
 ---
 
@@ -36,7 +36,7 @@
 
 ### 4. 生產級基礎設施
 - **FastAPI Backend**：非同步、基於 Pydantic 強型別合約的 RESTful API，並完備 Error Handle 捕捉機制。
-- **Streamlit Frontend**：具備 Expander 元件的聊天介面，完美將 Agent 的「思考鏈 (CoT)」與「檢索來源庫 (Sources)」白箱化可視化。
+- **Streamlit Frontend**：具備 Expander 元件的聊天介面，完美將 Agent 的「思考鏈」與「檢索來源庫 (Sources)」白箱化可視化。
 - **Docker 容器化**：透過 `docker-compose` 一鍵編排 API, UI, Qdrant 與 Neo4j 等微服務集群。
 - **CI/CD**：完備的 `.github/workflows/ci.yml` 腳本確保 Code Quality 與 `pytest` 單元測試覆蓋。
 
@@ -44,7 +44,7 @@
 
 ## 💡 應用場景展示
 
-本系統具備高度的領域適應性 (Domain-Agnostic)。為了面試展示與功能驗證，專案內建了**台灣《道路交通管理處罰條例》**的測試語料（位於 `data/raw/`，包含 TXT, CSV, JSON 格式）。
+本系統具備高度的領域適應性。為了面試展示與功能驗證，專案內建了**台灣《道路交通管理處罰條例》**的測試語料（位於 `data/raw/`，包含 TXT, CSV, JSON 格式）。
 
 當您啟動服務後，可以直接輸入以下測試問題：
 > 「請問沒戴安全帽要罰多少錢？」
