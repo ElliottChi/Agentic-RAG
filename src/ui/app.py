@@ -63,7 +63,7 @@ for msg in st.session_state.messages:
                         st.text(doc["content"][:200] + "..." if len(doc["content"]) > 200 else doc["content"])
 
 # --- Chat Input ---
-if user_input := st.chat_input("請輸入問題... (例如: LangGraph 是什麼？)"):
+if user_input := st.chat_input("請輸入問題"):
     # 1. 顯示 User 訊息
     st.session_state.messages.append({"role": "user", "content": user_input})
     with st.chat_message("user"):
